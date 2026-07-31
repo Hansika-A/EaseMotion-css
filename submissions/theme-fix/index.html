@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSSoC Theme Toggle Fix - Issue #56709</title>
+    <style>
+        /* Default Black/Dark Theme */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .card {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            background-color: #111111;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background 0.3s;
+        }
+
+        /* White/Light Theme Mode Configuration */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.light-mode .card {
+            background-color: #f5f5f5;
+            border-color: #dddddd;
+        }
+
+        body.light-mode button {
+            background-color: #000000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Theme Toggle Component</h1>
+        <p>GSSoC Issue #56709: Changing theme from Black to White</p>
+        <button id="theme-toggle">Switch to Light Mode</button>
+    </div>
+
+    <script>
+        // JavaScript logic to listen for the click event and switch styles
+        const toggleButton = document.getElementById('theme-toggle');
+
+        toggleButton.addEventListener('click', () => {
+            // Toggles the light-mode class on the body element
+            document.body.classList.toggle('light-mode');
+            
+            // Updates button text based on current background state
+            if (document.body.classList.contains('light-mode')) {
+                toggleButton.textContent = 'Switch to Dark Mode';
+            } else {
+                toggleButton.textContent = 'Switch to Light Mode';
+            }
+        });
+    </script>
+</body>
+</html>
